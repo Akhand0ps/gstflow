@@ -1,0 +1,684 @@
+<!doctype html>
+<!-- data-type: software, data-radius: soft, data-ground: sand, data-buttons: solid, data-motion -->
+<html lang="en" data-type="software" data-radius="soft" data-ground="sand" data-buttons="solid" data-motion class="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GST Flow: Statutory Invoicing &amp; GST Returns for Indian Enterprise</title>
+<meta name="description" content="Cloud software and Mobile PWA for statutory Indian GST compliance, Rule 46 Tax Invoicing, GSTR-1 offline JSON generation, Section 49 ITC waterfall calculation, and Luhn Modulo-36 GSTIN verification.">
+<meta name="site-kind" content="software">
+<meta name="page-type" content="software">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Onest:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="assets/ui/cards.css">
+<link rel="stylesheet" href="assets/motion/motion.css">
+<link rel="stylesheet" href="assets/backgrounds/backgrounds.css">
+<link rel="stylesheet" href="assets/layout/layout.css">
+<link rel="stylesheet" href="assets/layout/demo.css">
+<link rel="stylesheet" href="assets/icons/icon.css">
+<link rel="stylesheet" href="assets/ui/base.css">
+
+<style>
+:root {
+  --p-bg: #f8fafc;
+  --p-surface: #ffffff;
+  --p-ink: #0f172a;
+  --p-muted: #334155;
+  --p-accent: #1d4ed8;
+  --p-accent-ink: #f8fafc;
+  --p-action: #1d4ed8;
+  --p-action-ink: #f8fafc;
+  --p-inv-bg: #0f172a;
+  --p-inv-surface: #1e293b;
+  --p-inv-ink: #ffffff;
+  --p-inv-muted: #cbd5e1;
+  --p-inv-accent: #3b82f6;
+  --p-inv-accent-ink: #ffffff;
+  --p-inv-action: #ffffff;
+  --p-inv-action-ink: #0f172a;
+  --font-display: "Onest", system-ui, -apple-system, sans-serif;
+  --font-text: "Onest", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  --display-weight: 600;
+  --display-tracking: -0.035em;
+  --display-tracking-xl: -0.04em;
+  --line: #cbd5e1;
+}
+
+body {
+  background-color: var(--p-bg);
+  color: var(--p-ink);
+  font-family: var(--font-text);
+  margin: 0;
+  padding: 0;
+}
+
+/* Tabular Numerals */
+.num-tabular {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* Checksum Inspector */
+.checksum-box {
+  display: flex;
+  gap: 6px;
+  background: #f1f5f9;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  overflow-x: auto;
+}
+.checksum-char {
+  flex: 1;
+  min-width: 28px;
+  height: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--p-ink);
+}
+.checksum-label {
+  font-size: 9px;
+  font-family: var(--font-mono);
+  color: var(--p-muted);
+  text-transform: uppercase;
+}
+
+/* Rate Slabs */
+.rate-slab-group {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+.rate-slab-btn {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  padding: 10px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+}
+.rate-slab-btn.active {
+  background: #eff6ff;
+  border-color: #1d4ed8;
+  outline: 2px solid #1d4ed8;
+}
+
+/* Stacked Meter */
+.waterfall-meter {
+  height: 28px;
+  background: #f1f5f9;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  border: 1px solid var(--line);
+  margin-top: 14px;
+}
+.waterfall-segment {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* Split Section for FAQ */
+.faq-split {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.faq-item {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 18px;
+}
+.faq-item h4 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  color: var(--p-ink);
+}
+.faq-item p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--p-muted);
+  margin: 0;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 1. DEALT NAV: nav-centre -->
+<header class="nav nav--centre">
+  <div class="wrap nav__bar">
+    <a class="nav__logo" href="#top">
+      <span class="mark" data-mark="stack" aria-hidden="true"></span>
+      GST Flow
+    </a>
+    <nav class="nav__links" aria-label="Main Navigation">
+      <a class="nav__link" href="#checksum">GSTIN Inspector</a>
+      <a class="nav__link" href="#route">POS Routing</a>
+      <a class="nav__link" href="#itc">Section 49</a>
+      <a class="nav__link" href="#rates">Slabs</a>
+      <a class="nav__link" href="#faq">Filing Rules</a>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--primary" href="http://localhost:5174/">
+        Issue a Rule 46 Tax Invoice
+        <svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 2. DEALT HERO: hero-centred -->
+  <section class="hero hero--centred" aria-labelledby="hero-h" style="--h: 1; --hm: 1;">
+    <div class="wrap"><div class="hero-text">
+      <div class="hero__c">
+        <h1 id="hero-h"><span class="ly-mark" aria-hidden="true"></span> Statutory GST compliance and invoicing for Indian enterprise</h1>
+        <p class="hero__lead">Generate Rule 46 compliant tax invoices, calculate Section 49 statutory ITC set-offs and export GSTR-1 offline returns in seconds. For MSMEs, tech startups, and chartered accountants.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="http://localhost:5174/">Issue a Rule 46 Tax Invoice<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+          <a class="btn btn--secondary" href="#checksum">Verify a GSTIN</a>
+        </div>
+      </div>
+
+      <div class="hero__window" role="img" aria-label="Tax invoice simulation window" data-visual="app">
+        <div class="ly-piece d-win" aria-hidden="true">
+          <div class="d-win__bar">
+            <span style="display:inline-flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:11px; font-weight:700; color:#334155; text-transform:uppercase;">
+              <span style="width:6px; height:6px; border-radius:50%; background:#2563eb;"></span>
+              FORM GST INV-1 · RULE 46
+            </span>
+            <span style="flex:1"></span>
+            <span><b>INV/2026-27/0001</b></span>
+          </div>
+          <div class="d-win__body" style="grid-template-columns: 240px 1fr; min-height: 280px;">
+            <div class="d-side">
+              <b>SUPPLIER (MH 27)</b>
+              <span style="font-family: var(--font-mono); font-size: 11px;">27AAACT2727Q1ZW</span>
+              <div class="d-side__label"><b>BUYER (KA 29)</b></div>
+              <span style="font-family: var(--font-mono); font-size: 11px;">29AAACI4798L1ZU</span>
+              <div class="d-side__label"><b>ROUTE</b></div>
+              <span class="is-on">Inter-State 18% IGST</span>
+            </div>
+            <div class="d-main">
+              <div class="d-main__head">
+                <h4>Cloud Infrastructure Hosting (SAC 998314)</h4>
+                <span class="num-tabular" style="font-weight: 700; color: var(--p-action);">₹4,13,000.00</span>
+              </div>
+              <div class="d-rows">
+                <div class="d-row">
+                  <div class="d-thumb" style="display:grid; place-items:center; font-size:11px; font-weight:800; background:#eff6ff; color:#1d4ed8;">SAC</div>
+                  <div><b>Enterprise Cloud VM</b><small>Taxable Base Value</small></div>
+                  <div class="num-tabular">₹3,50,000</div>
+                  <div class="when">18% IGST</div>
+                  <div class="d-chip">₹63,000</div>
+                </div>
+              </div>
+              <div style="margin-top: 10px; padding: 10px 14px; background: #f8fafc; border-radius: 8px; font-size: 13px; display: flex; justify-content: space-between;">
+                <span>Section 170 Whole Rupee Total:</span>
+                <strong class="num-tabular" style="color: #1e3a8a;">₹4,13,000.00</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- 3. SECTION: Modulo-36 GSTIN Inspector (Chapter / Split layout) -->
+  <section class="section" id="checksum" aria-labelledby="checksum-h" style="--h: 1; --hm: 1;">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="checksum-h">Deterministic GSTIN verification before filing. <span class="muted">Modulo-36 checksum over Census state codes and CBDT PAN.</span></h2>
+      </div>
+
+      <div class="split" data-visual="ui">
+        <div class="split__text">
+          <p>Every GSTIN has an exact mathematical signature under the Luhn Modulo-36 algorithm. Catch invalid vendors before invoices enter your ledger.</p>
+          <div style="margin-top: 20px; display: flex; gap: 8px; flex-wrap: wrap;">
+            <input id="gstin-input" type="text" value="27AAACT2727Q1ZW" maxlength="15" style="padding: 10px 14px; font-family: var(--font-mono); font-size: 15px; font-weight: 700; border: 1px solid var(--line); border-radius: 8px; width: 200px; text-transform: uppercase;" />
+            <button id="verify-gstin-btn" class="btn btn--primary" type="button">Verify Checksum</button>
+          </div>
+          <div style="margin-top: 12px; display: flex; gap: 8px;">
+            <button class="btn btn--secondary preset-btn" data-gstin="29AAACI4798L1ZU" type="button">Infosys (29)</button>
+            <button class="btn btn--secondary preset-btn" data-gstin="07AAAAA0000A1Z5" type="button">Delhi (07)</button>
+          </div>
+        </div>
+
+        <div class="split__visual" style="background: #ffffff; border: 1px solid var(--line); border-radius: 14px; padding: 24px;">
+          <div class="checksum-box" id="checksum-display">
+            <!-- Rendered via JS -->
+          </div>
+          <div id="checksum-status" style="margin-top: 16px; padding: 12px 16px; border-radius: 8px; background: #ecfdf5; border: 1px solid #a7f3d0; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-weight: 700; color: #065f46; font-size: 13px;">Valid GSTIN: State 27 (Maharashtra) · PAN AAACT2727Q</span>
+            <span style="font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: #047857;">Mod-36 Checksum 'W' Verified</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. SECTION: Place of Supply Routing (3 Cards layout) -->
+  <section class="section" id="route" aria-labelledby="route-h" style="--h: 1; --hm: 2;">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="route-h">Automated Place of Supply routing. <span class="muted">50/50 CGST+SGST vs 100% IGST.</span></h2>
+      </div>
+
+      <div class="grid" data-visual="ui">
+        <article class="card card--row">
+          <strong>CGST 9%</strong>
+          <p>Credited to Central Government account</p>
+          <div class="panel panel--inset" role="img" aria-label="CGST tax liability">
+            <div class="stage"><div class="at-rise fit"><div class="d-pane" aria-hidden="true">
+              <h5>Central Tax (CGST)</h5>
+              <div style="font-size: 24px; font-weight: 800; color: #1d4ed8; margin: 8px 0;" class="num-tabular" id="route-cgst">₹9,000.00</div>
+              <small id="route-cgst-sub" style="color: var(--p-muted);">9% on ₹1,00,000</small>
+            </div></div></div>
+          </div>
+        </article>
+
+        <article class="card card--row">
+          <strong>SGST 9%</strong>
+          <p>Credited to Maharashtra State account</p>
+          <div class="panel panel--inset" role="img" aria-label="SGST tax liability">
+            <div class="stage"><div class="at-rise fit"><div class="d-pane" aria-hidden="true">
+              <h5>State Tax (SGST)</h5>
+              <div style="font-size: 24px; font-weight: 800; color: #0284c7; margin: 8px 0;" class="num-tabular" id="route-sgst">₹9,000.00</div>
+              <small id="route-sgst-sub" style="color: var(--p-muted);">9% on ₹1,00,000</small>
+            </div></div></div>
+          </div>
+        </article>
+
+        <article class="card card--row">
+          <strong>IGST 18%</strong>
+          <p>Integrated inter-state tax stream</p>
+          <div class="panel panel--inset" role="img" aria-label="IGST tax liability">
+            <div class="stage"><div class="at-rise fit"><div class="d-pane" aria-hidden="true">
+              <h5>Integrated Tax (IGST)</h5>
+              <div style="font-size: 24px; font-weight: 800; color: #64748b; margin: 8px 0;" class="num-tabular" id="route-igst">₹0.00</div>
+              <small id="route-igst-sub" style="color: var(--p-muted);">Exempt intra-state</small>
+            </div></div></div>
+          </div>
+        </article>
+      </div>
+
+      <div style="margin-top: 16px; display: flex; gap: 10px; justify-content: flex-end;">
+        <button id="route-intra-btn" class="btn btn--primary" type="button">Intra-State (MH &rarr; MH)</button>
+        <button id="route-inter-btn" class="btn btn--secondary" type="button">Inter-State (MH &rarr; KA)</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. SECTION: GSTR-3B Section 49 Statutory ITC Offset Cascade -->
+  <section class="section" id="itc" aria-labelledby="itc-h" style="--h: 1; --hm: 2;">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="itc-h">Section 49 statutory set-off without penalty risk. <span class="muted">Strict credit utilization waterfall.</span></h2>
+      </div>
+
+      <div class="grid" data-visual="ui">
+        <article class="card card--row">
+          <strong>₹94,500 Output Tax</strong>
+          <p>Total tax on outward supplies</p>
+          <div class="panel panel--inset" role="img" aria-label="Total outward tax liability">
+            <div class="stage"><div class="at-rise fit"><div class="d-pane" aria-hidden="true">
+              <h5>Outward Supply Liability</h5>
+              <div style="font-size: 24px; font-weight: 800; color: var(--p-ink); margin: 8px 0;" class="num-tabular">₹94,500.00</div>
+              <small style="color: var(--p-muted);">GSTR-1 Reconciled Outward</small>
+            </div></div></div>
+          </div>
+        </article>
+
+        <article class="card card--row">
+          <strong>₹87,300 Eligible ITC</strong>
+          <p>Set-off under Section 49 priority</p>
+          <div class="panel panel--inset" role="img" aria-label="Eligible input tax credit">
+            <div class="stage"><div class="at-rise fit"><div class="d-pane" aria-hidden="true">
+              <h5>Eligible ITC (GSTR-2B)</h5>
+              <div style="font-size: 24px; font-weight: 800; color: #16a34a; margin: 8px 0;" class="num-tabular">₹87,300.00</div>
+              <small style="color: var(--p-muted);">Section 16(2) Compliant</small>
+            </div></div></div>
+          </div>
+        </article>
+
+        <article class="card card--row">
+          <strong>₹7,200 Cash Due</strong>
+          <p>Payable via bank NEFT / RTGS</p>
+          <div class="panel panel--inset" role="img" aria-label="Net cash challan payable">
+            <div class="stage"><div class="at-rise fit"><div class="d-pane" aria-hidden="true">
+              <h5>Cash Challan (PMT-06)</h5>
+              <div style="font-size: 24px; font-weight: 800; color: #dc2626; margin: 8px 0;" class="num-tabular">₹7,200.00</div>
+              <small style="color: #dc2626;">Net Electronic Cash Ledger</small>
+            </div></div></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="waterfall-meter" role="img" aria-label="Stacked meter: ₹87,300 ITC offset vs ₹7,200 Cash Challan">
+        <div class="waterfall-segment" style="width: 92.4%; background: #2563eb;">ITC Offset: ₹87,300</div>
+        <div class="waterfall-segment" style="width: 7.6%; background: #dc2626;">Cash: ₹7,200</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. SECTION: Slabs & Invoices Table (Specs layout) -->
+  <section class="section" id="rates" aria-labelledby="rates-h" style="--h: 1; --hm: 2;">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="rates-h">Statutory rates from SAC 998314 to HSN 8471. <span class="muted">Whole-rupee rounding under Section 170.</span></h2>
+      </div>
+
+      <div class="rows--spec" data-visual="ui" style="background: #ffffff; border: 1px solid var(--line); border-radius: 14px; padding: 20px; margin-bottom: 20px;">
+        <div class="rate-slab-group" id="slab-selector">
+          <div class="rate-slab-btn" data-rate="0">
+            <div style="font-family: var(--font-mono); font-size: 10px; color: var(--p-muted);">0% EXEMPT</div>
+            <div style="font-size: 16px; font-weight: 800; color: var(--p-ink); margin-top: 2px;">0%</div>
+          </div>
+          <div class="rate-slab-btn" data-rate="5">
+            <div style="font-family: var(--font-mono); font-size: 10px; color: var(--p-muted);">5% MERIT</div>
+            <div style="font-size: 16px; font-weight: 800; color: var(--p-ink); margin-top: 2px;">5%</div>
+          </div>
+          <div class="rate-slab-btn" data-rate="12">
+            <div style="font-family: var(--font-mono); font-size: 10px; color: var(--p-muted);">12% STD I</div>
+            <div style="font-size: 16px; font-weight: 800; color: var(--p-ink); margin-top: 2px;">12%</div>
+          </div>
+          <div class="rate-slab-btn active" data-rate="18">
+            <div style="font-family: var(--font-mono); font-size: 10px; color: #1d4ed8; font-weight: 700;">18% STD II</div>
+            <div style="font-size: 16px; font-weight: 800; color: #1e3a8a; margin-top: 2px;">18%</div>
+          </div>
+          <div class="rate-slab-btn" data-rate="28">
+            <div style="font-family: var(--font-mono); font-size: 10px; color: var(--p-muted);">28% LUXURY</div>
+            <div style="font-size: 16px; font-weight: 800; color: var(--p-ink); margin-top: 2px;">28%</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 12px; padding: 12px 16px; background: #f8fafc; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+          <span id="slab-calc-result" class="num-tabular" style="font-size: 17px; font-weight: 800; color: var(--p-ink);">Invoice Total: ₹1,18,000.00</span>
+          <span id="slab-tax-amount" class="num-tabular" style="font-size: 13px; font-weight: 700; color: #15803d;">Tax Component: ₹18,000.00</span>
+        </div>
+      </div>
+
+      <div style="background: #ffffff; border: 1px solid var(--line); border-radius: 14px; padding: 20px;" data-visual="ui">
+        <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--line); text-align: left;">
+              <th style="padding: 8px; color: var(--p-muted);">Invoice No</th>
+              <th style="padding: 8px; color: var(--p-muted);">Party Name</th>
+              <th style="padding: 8px; color: var(--p-muted);">Type</th>
+              <th style="padding: 8px; color: var(--p-muted); text-align: right;">Grand Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--line);">
+              <td style="padding: 10px 8px; font-family: var(--font-mono); font-weight: 600;">INV/2026-27/0001</td>
+              <td style="padding: 10px 8px; font-weight: 600;">Infosys Limited</td>
+              <td style="padding: 10px 8px;"><span style="color: #1d4ed8; font-weight: 700;">SALES</span></td>
+              <td style="padding: 10px 8px; text-align: right; font-weight: 700;" class="num-tabular">₹4,13,000.00</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--line);">
+              <td style="padding: 10px 8px; font-family: var(--font-mono); font-weight: 600;">INV/2026-27/0002</td>
+              <td style="padding: 10px 8px; font-weight: 600;">Reliance Retail Limited</td>
+              <td style="padding: 10px 8px;"><span style="color: #1d4ed8; font-weight: 700;">SALES</span></td>
+              <td style="padding: 10px 8px; text-align: right; font-weight: 700;" class="num-tabular">₹2,06,500.00</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 8px; font-family: var(--font-mono); font-weight: 600;">PUR/2026-27/0001</td>
+              <td style="padding: 10px 8px; font-weight: 600;">Cloud Matrix Technologies LLP</td>
+              <td style="padding: 10px 8px;"><span style="color: #475569; font-weight: 700;">PURCHASE</span></td>
+              <td style="padding: 10px 8px; text-align: right; font-weight: 700;" class="num-tabular">₹1,00,300.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. SECTION: Compliance FAQ (Split with image frame) -->
+  <section class="section" id="faq" aria-labelledby="faq-h" style="--h: 1; --hm: 2;">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="faq-h">Compliance rules explained plainly. <span class="muted">Statutory rules and schemas.</span></h2>
+      </div>
+
+      <div class="faq-split" data-visual="photo">
+        <div class="frame" style="border-radius: 12px; overflow: hidden; border: 1px solid var(--line); height: 100%; min-height: 320px;">
+          <img src="assets/photos/img/m130857602-1200.webp" alt="Precision architectural details representing compliance foundation" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <h4>What makes an invoice strictly compliant with GST Rule 46?</h4>
+            <p>An invoice must contain supplier legal name, address, GSTIN, consecutive serial number, date of issue, recipient name, address and GSTIN/UIN, HSN/SAC code, description, quantity, total value, taxable value, tax rate, and place of supply.</p>
+          </div>
+          <div class="faq-item">
+            <h4>How does Section 170 whole-rupee rounding work?</h4>
+            <p>Under Section 170 of the CGST Act, the amount of tax, interest or penalty is rounded off to the nearest rupee. Fractions of 50 paise or more are rounded up to one rupee; fractions under 50 paise are disregarded.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Why can CGST input credit never be used to pay SGST liability?</h4>
+            <p>Under Section 49(5)(e) and (f), CGST credit is administered by the Central Government and SGST by State Governments. Cross-utilization between CGST and SGST is expressly prohibited by the Constitution.</p>
+          </div>
+          <div class="faq-item">
+            <h4>How does GST Flow export to the official GST Portal offline utility?</h4>
+            <p>GST Flow structures all invoice records into the official GST offline tool JSON schema covering: Table 4 (B2B Tax Invoices), Table 5 (B2C Large invoices), Table 7 (B2C Small supplies), Table 12 (HSN summary), and Table 13 (Document issues register).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- 8. DEALT CLOSE & STATEMENT FOOTER -->
+<footer class="footer closing footer--statement ground-inverse" aria-labelledby="close-h" style="--h: 1; --hm: 2;">
+  <div class="wrap">
+    <div class="closing__cta close--type">
+      <div class="section-head"><h2 id="close-h">Ready to issue your next tax invoice?</h2></div>
+      <p style="color: #ffffff; max-width: 52ch; margin-inline: auto; margin-bottom: 24px; font-size: 16px; line-height: 1.6;">Deterministic Modulo-36 verification, Section 49 statutory ITC set-off, and 1-click GSTR-1 offline JSON export.</p>
+      <a class="btn btn--primary btn--xl btn--wide" href="http://localhost:5174/">Issue a Rule 46 Tax Invoice<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+    </div>
+
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-6 stack-5">
+          <a class="footer__mark" href="#top"><span class="mark" data-mark="stack" aria-hidden="true"></span>GST Flow</a>
+        </div>
+        <div class="span-3 start-7 footer__col">
+          <h4>Statutory</h4>
+          <ul>
+            <li><a href="#checksum">GSTIN Inspector</a></li>
+            <li><a href="#route">POS Routing</a></li>
+            <li><a href="#itc">Section 49 Waterfall</a></li>
+          </ul>
+        </div>
+        <div class="span-3 footer__col">
+          <h4>Compliance</h4>
+          <ul>
+            <li><a href="#rates">Statutory Slabs</a></li>
+            <li><a href="#faq">Rule 46 &amp; 170</a></li>
+            <li><a href="http://localhost:5174/">Invoicing PWA</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__legal">
+        <span>&copy; 2026 Apex Tech Solutions Private Limited. Bandra Kurla Complex, Mumbai.</span>
+        <span>Photographs by Kleseus (CC0) and open collections, credited in assets/credits.json.</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Interactive Scripts -->
+<script>
+const CHAR_MAP = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+function calculateMod36Checksum(input14) {
+  if (!input14 || input14.length !== 14) return null;
+  let total = 0;
+  for (let i = 0; i < 14; i++) {
+    const char = input14[i];
+    const val = CHAR_MAP.indexOf(char);
+    if (val === -1) return null;
+    const factor = (i % 2 === 0) ? 1 : 2;
+    const product = val * factor;
+    const quotient = Math.floor(product / 36);
+    const remainder = product % 36;
+    total += quotient + remainder;
+  }
+  const remainder36 = total % 36;
+  const checkCodePoint = (36 - remainder36) % 36;
+  return CHAR_MAP[checkCodePoint];
+}
+
+function renderGSTINBox(gstin) {
+  const container = document.getElementById('checksum-display');
+  const statusEl = document.getElementById('checksum-status');
+  if (!container) return;
+  container.innerHTML = '';
+  const clean = (gstin || '').toUpperCase().trim();
+
+  const labels = ['ST','ST','PAN','PAN','PAN','PAN','PAN','PAN','PAN','PAN','PAN','PAN','ENT','Z','CHK'];
+
+  for (let i = 0; i < 15; i++) {
+    const char = clean[i] || '·';
+    const box = document.createElement('div');
+    box.className = 'checksum-char';
+    box.innerHTML = `<span>${char}</span><span class="checksum-label">${labels[i]}</span>`;
+    if (i === 14) {
+      box.style.borderColor = '#1d4ed8';
+      box.style.background = '#eff6ff';
+      box.style.color = '#1d4ed8';
+    }
+    container.appendChild(box);
+  }
+
+  if (clean.length === 15) {
+    const expected = calculateMod36Checksum(clean.slice(0, 14));
+    const actual = clean[14];
+    if (expected && expected === actual) {
+      statusEl.style.display = 'flex';
+      statusEl.style.background = '#ecfdf5';
+      statusEl.style.borderColor = '#a7f3d0';
+      statusEl.innerHTML = `
+        <span style="font-weight: 700; color: #065f46; font-size: 13px;">Valid GSTIN: State ${clean.slice(0, 2)} · PAN ${clean.slice(2, 12)}</span>
+        <span style="font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: #047857;">Mod-36 Checksum '${actual}' Verified</span>
+      `;
+    } else {
+      statusEl.style.display = 'flex';
+      statusEl.style.background = '#fef2f2';
+      statusEl.style.borderColor = '#fecaca';
+      statusEl.innerHTML = `
+        <span style="font-weight: 700; color: #991b1b; font-size: 13px;">Invalid Checksum: Expected '${expected}' but found '${actual}'</span>
+        <span style="font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: #b91c1c;">Checksum Mismatch</span>
+      `;
+    }
+  }
+}
+
+// POS Route Switcher
+const intraBtn = document.getElementById('route-intra-btn');
+const interBtn = document.getElementById('route-inter-btn');
+const cgstEl = document.getElementById('route-cgst');
+const sgstEl = document.getElementById('route-sgst');
+const igstEl = document.getElementById('route-igst');
+const cgstSub = document.getElementById('route-cgst-sub');
+const sgstSub = document.getElementById('route-sgst-sub');
+const igstSub = document.getElementById('route-igst-sub');
+
+intraBtn?.addEventListener('click', () => {
+  intraBtn.className = 'btn btn--primary';
+  interBtn.className = 'btn btn--secondary';
+  cgstEl.textContent = '₹9,000.00';
+  cgstEl.style.color = '#1d4ed8';
+  cgstSub.textContent = '9% on ₹1,00,000';
+  sgstEl.textContent = '₹9,000.00';
+  sgstEl.style.color = '#0284c7';
+  sgstSub.textContent = '9% on ₹1,00,000';
+  igstEl.textContent = '₹0.00';
+  igstEl.style.color = '#64748b';
+  igstSub.textContent = 'Exempt intra-state';
+});
+
+interBtn?.addEventListener('click', () => {
+  interBtn.className = 'btn btn--primary';
+  intraBtn.className = 'btn btn--secondary';
+  cgstEl.textContent = '₹0.00';
+  cgstEl.style.color = '#64748b';
+  cgstSub.textContent = 'Exempt inter-state';
+  sgstEl.textContent = '₹0.00';
+  sgstEl.style.color = '#64748b';
+  sgstSub.textContent = 'Exempt inter-state';
+  igstEl.textContent = '₹18,000.00';
+  igstEl.style.color = '#1d4ed8';
+  igstSub.textContent = '18% on ₹1,00,000';
+});
+
+// Slab Calculator
+const slabButtons = document.querySelectorAll('.rate-slab-btn');
+const slabResult = document.getElementById('slab-calc-result');
+const slabTax = document.getElementById('slab-tax-amount');
+
+slabButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    slabButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const rate = parseFloat(btn.dataset.rate);
+    const base = 100000;
+    const tax = Math.round((base * rate) / 100);
+    const total = base + tax;
+    slabResult.textContent = `Invoice Total: ₹${total.toLocaleString('en-IN')}.00`;
+    slabTax.textContent = `Tax Component: ₹${tax.toLocaleString('en-IN')}.00`;
+  });
+});
+
+// Presets
+document.querySelectorAll('.preset-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const g = btn.dataset.gstin;
+    document.getElementById('gstin-input').value = g;
+    renderGSTINBox(g);
+  });
+});
+
+document.getElementById('gstin-input')?.addEventListener('input', (e) => {
+  renderGSTINBox(e.target.value);
+});
+
+renderGSTINBox('27AAACT2727Q1ZW');
+</script>
+
+<script type="module" src="assets/system.js"></script>
+<script type="module" src="assets/motion/motion.js"></script>
+<script type="module" src="assets/layout/layout.js"></script>
+</body>
+</html>

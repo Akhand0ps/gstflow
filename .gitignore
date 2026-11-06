@@ -1,0 +1,116 @@
+# ==============================================================================
+# GST Flow — Comprehensive Git Ignore Policy
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. Environment & Secrets
+# ------------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.cert
+
+# ------------------------------------------------------------------------------
+# 2. Python & Django
+# ------------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+backend/venv/
+backend/.venv/
+
+# Django Database & Runtime
+*.sqlite3
+backend/db.sqlite3
+backend/staticfiles/
+backend/media/
+media/
+staticfiles/
+
+# Testing & Coverage
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+
+# Distribution / Packaging
+build/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ------------------------------------------------------------------------------
+# 3. Node.js & React (Vite)
+# ------------------------------------------------------------------------------
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+.vite/
+frontend/.vite/
+
+# Node logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Next / Nuxt / Vite build caches
+.cache/
+.parcel-cache/
+.eslintcache
+
+# ------------------------------------------------------------------------------
+# 4. Large Media & Scratch Files
+# ------------------------------------------------------------------------------
+*.mp4
+*.mov
+*.avi
+klVp7yWhG1QI5HAz-optimized.mp4
+/scratch/
+*.log
+
+# ------------------------------------------------------------------------------
+# 5. OS & Editor Metadata
+# ------------------------------------------------------------------------------
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+
+# IDEs & Editors
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~

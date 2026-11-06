@@ -1,0 +1,48 @@
+{
+ "url": "http://localhost:5173/",
+ "views": {
+  "mobile": {
+   "width": 390,
+   "height": 844,
+   "navH": 0,
+   "scrollHeight": 4382,
+   "screens": 5.19,
+   "sections": [
+    {
+     "n": 1,
+     "tag": "div",
+     "id": "",
+     "cls": "",
+     "top": 77,
+     "h": 4193,
+     "hScreens": 4.97,
+     "offGrid": 817,
+     "tiles": [
+      {
+       "file": "mobile-sec-01-a.jpg",
+       "scrollY": 77
+      },
+      {
+       "file": "mobile-sec-01-b.jpg",
+       "scrollY": 921
+      },
+      {
+       "file": "mobile-sec-01-c.jpg",
+       "scrollY": 1765
+      },
+      {
+       "file": "mobile-sec-01-d.jpg",
+       "scrollY": 2609
+      },
+      {
+       "file": "mobile-sec-01-e.jpg",
+       "scrollY": 3426
+      }
+     ]
+    }
+   ],
+   "consoleErrors": []
+  }
+ },
+ "at": "2026-11-05T20:11:55.695Z"
+}

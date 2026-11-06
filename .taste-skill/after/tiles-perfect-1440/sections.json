@@ -1,0 +1,40 @@
+{
+ "url": "http://localhost:5173/",
+ "views": {
+  "desktop": {
+   "width": 1440,
+   "height": 900,
+   "navH": 0,
+   "scrollHeight": 2839,
+   "screens": 3.15,
+   "sections": [
+    {
+     "n": 1,
+     "tag": "div",
+     "id": "",
+     "cls": "",
+     "top": 77,
+     "h": 2650,
+     "hScreens": 2.94,
+     "offGrid": 850,
+     "tiles": [
+      {
+       "file": "desktop-sec-01-a.jpg",
+       "scrollY": 77
+      },
+      {
+       "file": "desktop-sec-01-b.jpg",
+       "scrollY": 977
+      },
+      {
+       "file": "desktop-sec-01-c.jpg",
+       "scrollY": 1827
+      }
+     ]
+    }
+   ],
+   "consoleErrors": []
+  }
+ },
+ "at": "2026-11-05T20:29:35.955Z"
+}

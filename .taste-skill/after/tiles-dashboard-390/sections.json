@@ -1,0 +1,36 @@
+{
+ "url": "http://localhost:5173/#dashboard",
+ "views": {
+  "mobile": {
+   "width": 390,
+   "height": 844,
+   "navH": 0,
+   "scrollHeight": 1786,
+   "screens": 2.12,
+   "sections": [
+    {
+     "n": 1,
+     "tag": "div",
+     "id": "",
+     "cls": "",
+     "top": 81,
+     "h": 1625,
+     "hScreens": 1.93,
+     "offGrid": 781,
+     "tiles": [
+      {
+       "file": "mobile-sec-01-a.jpg",
+       "scrollY": 81
+      },
+      {
+       "file": "mobile-sec-01-b.jpg",
+       "scrollY": 862
+      }
+     ]
+    }
+   ],
+   "consoleErrors": []
+  }
+ },
+ "at": "2026-11-05T21:10:46.900Z"
+}

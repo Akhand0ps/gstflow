@@ -1,0 +1,60 @@
+{
+ "url": "http://localhost:5173/#landing",
+ "views": {
+  "mobile": {
+   "width": 390,
+   "height": 844,
+   "navH": 0,
+   "scrollHeight": 6874,
+   "screens": 8.14,
+   "sections": [
+    {
+     "n": 1,
+     "tag": "div",
+     "id": "",
+     "cls": "",
+     "top": 81,
+     "h": 6713,
+     "hScreens": 7.95,
+     "offGrid": 805,
+     "tiles": [
+      {
+       "file": "mobile-sec-01-a.jpg",
+       "scrollY": 81
+      },
+      {
+       "file": "mobile-sec-01-b.jpg",
+       "scrollY": 925
+      },
+      {
+       "file": "mobile-sec-01-c.jpg",
+       "scrollY": 1769
+      },
+      {
+       "file": "mobile-sec-01-d.jpg",
+       "scrollY": 2613
+      },
+      {
+       "file": "mobile-sec-01-e.jpg",
+       "scrollY": 3457
+      },
+      {
+       "file": "mobile-sec-01-f.jpg",
+       "scrollY": 4301
+      },
+      {
+       "file": "mobile-sec-01-g.jpg",
+       "scrollY": 5145
+      },
+      {
+       "file": "mobile-sec-01-h.jpg",
+       "scrollY": 5950
+      }
+     ]
+    }
+   ],
+   "consoleErrors": []
+  }
+ },
+ "at": "2026-11-05T21:47:06.775Z"
+}

@@ -1,0 +1,67 @@
+@import "./taste-assets/motion/motion.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-padding-top: 5rem;
+    background-color: #F9F9F6;
+  }
+
+  :root {
+    --bg: #F9F9F6;
+    --card: #FFFFFF;
+    --ink: #111111;
+    --body: #555550;
+    --muted: #777770;
+    --line: #E5E3DA;
+    --accent: #111111;
+    --itc: #1E4332;
+    --liability: #963614;
+  }
+
+  body {
+    background-color: #F9F9F6;
+    color: #111111;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  h1, h2, h3, h4 {
+    letter-spacing: -0.025em;
+    color: #111111;
+  }
+}
+
+/* Architectural Ledger Cards */
+.taste-card {
+  border: 1px solid #E5E3DA;
+  background-color: #FFFFFF;
+  border-radius: 0px;
+}
+
+/* High Contrast Tabular Numerals for statutory ledgers */
+.num-tabular {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* Clean Architectural Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F3F2ED;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #DCDACF;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B8B6AB;
+}

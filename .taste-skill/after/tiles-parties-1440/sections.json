@@ -1,0 +1,32 @@
+{
+ "url": "http://localhost:5173/#parties",
+ "views": {
+  "desktop": {
+   "width": 1440,
+   "height": 900,
+   "navH": 0,
+   "scrollHeight": 1036,
+   "screens": 1.15,
+   "sections": [
+    {
+     "n": 1,
+     "tag": "div",
+     "id": "",
+     "cls": "",
+     "top": 97,
+     "h": 891,
+     "hScreens": 0.99,
+     "offGrid": 891,
+     "tiles": [
+      {
+       "file": "desktop-sec-01-a.jpg",
+       "scrollY": 97
+      }
+     ]
+    }
+   ],
+   "consoleErrors": []
+  }
+ },
+ "at": "2026-11-05T21:06:08.903Z"
+}
